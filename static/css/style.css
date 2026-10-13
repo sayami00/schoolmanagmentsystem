@@ -58,6 +58,32 @@
   }
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #121316;
+  --surface: #1a1b1f;
+  --surface-2: #202227;
+  --border: #2e3138;
+  --text: #f0efec;
+  --text-2: #c3c2b7;
+  --muted: #9a9ca4;
+  --primary: #4a8be0;
+  --primary-hover: #6a9fe6;
+  --primary-ink: #0d1117;
+  --focus: #6a9fe6;
+  --danger: #e66767;
+  --danger-hover: #ee8a8a;
+  --series-1: #3987e5;
+  --grid: #2a2c32;
+  --good-bg: #173a24;  --good-fg: #8fe0a8;
+  --warn-bg: #3d2f0c;  --warn-fg: #f3cd6b;
+  --info-bg: #182c4a;  --info-fg: #9cc3f5;
+  --bad-bg: #431c1c;   --bad-fg: #f5a3a3;
+  --leave-bg: #2a2550; --leave-fg: #bdb4f5;
+  --none-bg: #2a2c32;  --none-fg: #c3c2b7;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4);
+}
+
 * { box-sizing: border-box; }
 html, body { margin: 0; }
 body {
@@ -246,6 +272,21 @@ dialog form { display: flex; flex-direction: column; max-height: calc(100vh - 34
 .dialog-foot { padding: 12px 20px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 8px; }
 .icon-btn { background: none; border: 0; color: var(--muted); font-size: 1.4rem; line-height: 1; cursor: pointer; padding: 4px 8px; border-radius: 6px; }
 .icon-btn:hover { background: var(--surface-2); color: var(--text); }
+
+/* theme toggle: shows a moon in light mode, a sun in dark mode */
+.theme-toggle { display: inline-flex; align-items: center; justify-content: center; padding: 6px; }
+.theme-toggle svg { width: 18px; height: 18px; }
+.theme-toggle .i-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .i-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .i-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .i-sun { display: block; }
+  :root:not([data-theme="light"]) .theme-toggle .i-moon { display: none; }
+}
+.sidebar-foot .links { align-items: center; }
+.sidebar-foot .theme-toggle { margin-left: auto; }
+.topbar-actions { display: flex; align-items: center; gap: 4px; }
+.theme-corner { position: fixed; top: 12px; right: 12px; }
 
 .toasts { position: fixed; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 8px; z-index: 100; }
 .toast { background: var(--text); color: var(--surface); padding: 10px 14px; border-radius: 8px; box-shadow: var(--shadow); max-width: min(360px, calc(100vw - 32px)); font-size: .9rem; }

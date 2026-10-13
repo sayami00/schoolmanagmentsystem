@@ -15,6 +15,8 @@ const ICONS = {
   reports: '<path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM9 17H7v-7h2zm4 0h-2V7h2zm4 0h-2v-4h2z"/>',
   users: '<path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5zm0 6a2.5 2.5 0 1 1-2.5 2.5A2.5 2.5 0 0 1 12 7zm5 10H7v-1c0-1.7 3.3-2.5 5-2.5s5 .8 5 2.5z"/>',
   menu: '<path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>',
+  moon: '<path d="M12.3 22A10 10 0 0 1 9.4 2.4a1 1 0 0 1 1.2 1.3 8 8 0 0 0 9.7 9.7 1 1 0 0 1 1.3 1.2A10 10 0 0 1 12.3 22z"/>',
+  sun: '<path d="M12 7a5 5 0 1 0 5 5 5 5 0 0 0-5-5zM11 1h2v3h-2zm0 19h2v3h-2zM3.5 4.9l1.4-1.4 2.1 2.1-1.4 1.4zm13.6 13.6 1.4-1.4 2.1 2.1-1.4 1.4zM1 11h3v2H1zm19 0h3v2h-3zM3.5 19.1l2.1-2.1 1.4 1.4-2.1 2.1zM17.1 5.6l2.1-2.1 1.4 1.4-2.1 2.1z"/>',
 };
 
 const NAV = [
@@ -35,6 +37,11 @@ function esc(value) {
 
 function icon(name) {
   return `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">${ICONS[name]}</svg>`;
+}
+
+function themeToggle() {
+  return `<button type="button" class="icon-btn theme-toggle" data-theme-toggle
+    aria-label="Toggle dark mode" title="Toggle dark mode">${icon("moon").replace("<svg", '<svg class="i-moon"')}${icon("sun").replace("<svg", '<svg class="i-sun"')}</button>`;
 }
 
 function badge(value, label) {
@@ -140,14 +147,15 @@ async function initLayout() {
     <div class="sidebar-foot">
       <div class="who">${esc(user.full_name)}</div>
       <div class="role">${esc(user.role === "admin" ? "Administrator" : "HR")}</div>
-      <div class="links"><a href="/account">Account</a><button type="button" class="linklike" id="logout-btn">Log out</button></div>
+      <div class="links"><a href="/account">Account</a><button type="button" class="linklike" id="logout-btn">Log out</button>${themeToggle()}</div>
     </div>`;
 
   const top = document.createElement("header");
   top.className = "topbar";
   top.innerHTML = `<div class="brand"><span class="brand-mark">EA</span><span>EAMS</span></div>
+    <div class="topbar-actions">${themeToggle()}
     <button type="button" class="icon-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">${ICONS.menu}</svg></button>`;
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">${ICONS.menu}</svg></button></div>`;
   document.querySelector(".layout").prepend(top);
 
   const menuBtn = document.getElementById("menu-btn");
