@@ -99,3 +99,4 @@ API docs are generated automatically at `/docs` (Swagger UI) while the server is
 - There is no holiday calendar or leave balance tracking.
 - Approved leave days are counted as calendar days.
 - "Today" means the server's local date.
+"# schoolmanagmentsystem" 
