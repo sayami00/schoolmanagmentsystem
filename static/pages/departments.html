@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Departments · EAMS</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main">
+    <div class="page-head">
+      <div><h1>Departments</h1><div class="sub" id="count"></div></div>
+      <button class="btn primary" id="add-btn" type="button">+ Add department</button>
+    </div>
+    <section class="card">
+      <div class="table-wrap">
+        <table class="stack">
+          <thead><tr><th>Name</th><th>Code</th><th>Description</th><th class="num">Active staff</th><th class="num">Total staff</th><th><span class="hidden">Actions</span></th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<dialog id="dept-dialog" aria-labelledby="dept-title">
+  <form novalidate>
+    <div class="dialog-head"><h2 class="dialog-title" id="dept-title">Department</h2><button type="button" class="icon-btn" data-close aria-label="Close">&times;</button></div>
+    <div class="dialog-body">
+      <p class="form-error hidden" role="alert"></p>
+      <input type="hidden" name="id">
+      <div class="form-grid">
+        <label class="field">Name *<input name="name" required maxlength="100"></label>
+        <label class="field">Code *<input name="code" required maxlength="10" placeholder="ENG"></label>
+        <label class="field full">Description<textarea name="description" maxlength="500"></textarea></label>
+      </div>
+    </div>
+    <div class="dialog-foot"><button type="button" class="btn" data-close>Cancel</button><button type="submit" class="btn primary">Save</button></div>
+  </form>
+</dialog>
+
+<script src="/static/js/app.js"></script>
+<script src="/static/js/departments.js"></script>
+</body>
+</html>

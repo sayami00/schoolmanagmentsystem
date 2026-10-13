@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Employees · EAMS</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main">
+    <div class="page-head">
+      <div><h1>Employees</h1><div class="sub" id="count"></div></div>
+      <button class="btn primary" id="add-btn" type="button">+ Add employee</button>
+    </div>
+    <section class="card">
+      <div class="toolbar">
+        <label class="field grow">Search
+          <input type="search" id="q" placeholder="Name, code, email or designation" maxlength="100">
+        </label>
+        <label class="field">Department <select id="f-dept"></select></label>
+        <label class="field">Status
+          <select id="f-status"><option value="">All</option><option value="active" selected>Active</option><option value="inactive">Inactive</option></select>
+        </label>
+      </div>
+      <div class="table-wrap">
+        <table class="stack">
+          <thead><tr><th>Employee</th><th>Code</th><th>Department</th><th>Designation</th><th>Hire date</th><th>Status</th><th><span class="hidden">Actions</span></th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <div class="pager">
+        <span id="page-info"></span>
+        <div class="actions"><button class="btn sm" id="prev" type="button">Previous</button><button class="btn sm" id="next" type="button">Next</button></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<dialog id="emp-dialog" aria-labelledby="emp-title">
+  <form novalidate>
+    <div class="dialog-head"><h2 class="dialog-title" id="emp-title">Employee</h2><button type="button" class="icon-btn" data-close aria-label="Close">&times;</button></div>
+    <div class="dialog-body">
+      <p class="form-error hidden" role="alert"></p>
+      <input type="hidden" name="id">
+      <div class="form-grid">
+        <label class="field">Employee code *<input name="emp_code" required maxlength="20" placeholder="EMP021"></label>
+        <label class="field">Department *<select name="department_id" data-type="int" required></select></label>
+        <label class="field">First name *<input name="first_name" required maxlength="100"></label>
+        <label class="field">Last name *<input name="last_name" required maxlength="100"></label>
+        <label class="field">Email *<input name="email" type="email" required maxlength="254"></label>
+        <label class="field">Phone<input name="phone" type="tel" maxlength="20"></label>
+        <label class="field">Designation<input name="designation" maxlength="100"></label>
+        <label class="field">Hire date *<input name="hire_date" type="date" required></label>
+        <label class="field">Status
+          <select name="status"><option value="active">Active</option><option value="inactive">Inactive</option></select>
+        </label>
+      </div>
+    </div>
+    <div class="dialog-foot"><button type="button" class="btn" data-close>Cancel</button><button type="submit" class="btn primary">Save</button></div>
+  </form>
+</dialog>
+
+<script src="/static/js/app.js"></script>
+<script src="/static/js/employees.js"></script>
+</body>
+</html>

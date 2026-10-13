@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Leave records · EAMS</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main">
+    <div class="page-head">
+      <div><h1>Leave records</h1><div class="sub" id="count"></div></div>
+      <button class="btn primary" id="add-btn" type="button">+ Record leave</button>
+    </div>
+    <section class="card">
+      <div class="toolbar">
+        <label class="field">Status
+          <select id="f-status">
+            <option value="">All</option><option value="pending">Pending</option>
+            <option value="approved">Approved</option><option value="rejected">Rejected</option>
+          </select>
+        </label>
+        <label class="field">Month <input type="month" id="f-month"></label>
+        <label class="field grow">Employee <select id="f-emp"></select></label>
+      </div>
+      <div class="table-wrap">
+        <table class="stack">
+          <thead><tr><th>Employee</th><th>Type</th><th>Dates</th><th class="num">Days</th><th>Reason</th><th>Status</th><th><span class="hidden">Actions</span></th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<dialog id="leave-dialog" aria-labelledby="leave-title">
+  <form novalidate>
+    <div class="dialog-head"><h2 class="dialog-title" id="leave-title">Leave</h2><button type="button" class="icon-btn" data-close aria-label="Close">&times;</button></div>
+    <div class="dialog-body">
+      <p class="form-error hidden" role="alert"></p>
+      <input type="hidden" name="id">
+      <div class="form-grid">
+        <label class="field full">Employee *<select name="employee_id" data-type="int" required></select></label>
+        <label class="field">Leave type *
+          <select name="leave_type" required>
+            <option value="annual">Annual</option><option value="sick">Sick</option><option value="casual">Casual</option>
+            <option value="unpaid">Unpaid</option><option value="other">Other</option>
+          </select>
+        </label>
+        <div></div>
+        <label class="field">Start date *<input name="start_date" type="date" required></label>
+        <label class="field">End date *<input name="end_date" type="date" required></label>
+        <label class="field full">Reason<textarea name="reason" maxlength="500"></textarea></label>
+      </div>
+    </div>
+    <div class="dialog-foot"><button type="button" class="btn" data-close>Cancel</button><button type="submit" class="btn primary">Save</button></div>
+  </form>
+</dialog>
+
+<script src="/static/js/app.js"></script>
+<script src="/static/js/leaves.js"></script>
+</body>
+</html>

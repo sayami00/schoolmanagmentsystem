@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daily attendance · EAMS</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main">
+    <div class="page-head">
+      <div><h1>Daily attendance</h1><div class="sub" id="summary"></div></div>
+    </div>
+    <section class="card">
+      <div class="toolbar">
+        <label class="field">Date <input type="date" id="date"></label>
+        <label class="field">Department <select id="f-dept"></select></label>
+        <div class="grow"></div>
+        <button class="btn" id="all-present" type="button">Mark unmarked as present</button>
+        <button class="btn primary" id="save" type="button">Save attendance</button>
+      </div>
+      <p class="muted hidden" id="readonly-note">Future dates cannot be marked.</p>
+      <div class="table-wrap">
+        <table class="stack sheet">
+          <thead><tr><th>Employee</th><th>Status</th><th>Check-in</th><th>Check-out</th><th>Notes</th><th><span class="hidden">Actions</span></th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="/static/js/app.js"></script>
+<script src="/static/js/attendance.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in · EAMS</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <main class="login-wrap">
+    <div class="card login-card">
+      <div class="brand"><span class="brand-mark">EA</span><span>Employee &amp; Attendance</span></div>
+      <h1>Sign in</h1>
+      <p class="muted">Admin and HR staff only.</p>
+      <form id="login-form" novalidate>
+        <p class="form-error hidden" role="alert"></p>
+        <label class="field">Username
+          <input name="username" autocomplete="username" required maxlength="50" autofocus>
+        </label>
+        <label class="field">Password
+          <input name="password" type="password" autocomplete="current-password" required maxlength="128">
+        </label>
+        <button class="btn primary" type="submit">Sign in</button>
+      </form>
+      <p class="hint">Demo accounts: <strong>admin</strong> / Admin@123 · <strong>hr</strong> / Hr@12345</p>
+    </div>
+  </main>
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/login.js"></script>
+</body>
+</html>

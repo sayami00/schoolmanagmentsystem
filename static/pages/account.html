@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My account · EAMS</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main">
+    <div class="page-head"><div><h1>My account</h1><div class="sub" id="who"></div></div></div>
+    <section class="card login-card">
+      <h2>Change password</h2>
+      <form id="pwd-form" novalidate>
+        <p class="form-error hidden" role="alert"></p>
+        <label class="field">Current password<input name="current_password" type="password" autocomplete="current-password" required maxlength="128"></label>
+        <label class="field">New password<input name="new_password" type="password" autocomplete="new-password" required maxlength="128"></label>
+        <label class="field">Confirm new password<input name="confirm" type="password" autocomplete="new-password" required maxlength="128"></label>
+        <p class="muted">At least 8 characters, including a letter and a digit. Other sessions will be signed out.</p>
+        <button class="btn primary" type="submit">Update password</button>
+      </form>
+    </section>
+  </main>
+</div>
+<script src="/static/js/app.js"></script>
+<script src="/static/js/account.js"></script>
+</body>
+</html>

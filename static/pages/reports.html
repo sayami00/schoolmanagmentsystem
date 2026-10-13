@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Monthly report · EAMS</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main">
+    <div class="page-head">
+      <div><h1>Monthly attendance report</h1><div class="sub" id="title"></div></div>
+      <a class="btn primary" id="csv" href="#" download>Export CSV</a>
+    </div>
+    <section class="stats" id="stats" aria-label="Month totals"></section>
+    <section class="card">
+      <div class="toolbar">
+        <label class="field">Month <input type="month" id="month"></label>
+        <label class="field">Department <select id="f-dept"></select></label>
+      </div>
+      <div class="table-wrap">
+        <table class="stack">
+          <thead><tr><th>Employee</th><th>Department</th><th class="num">Present</th><th class="num">Late</th><th class="num">Half day</th>
+            <th class="num">Absent</th><th class="num">On leave</th><th class="num">Days marked</th><th class="num">Approved leave days</th><th class="num">Rate</th></tr></thead>
+          <tbody id="rows"></tbody>
+          <tfoot id="foot"></tfoot>
+        </table>
+      </div>
+      <p class="muted">Rate = (present + late + ½ × half day) ÷ (days marked − on leave).</p>
+    </section>
+  </main>
+</div>
+<script src="/static/js/app.js"></script>
+<script src="/static/js/reports.js"></script>
+</body>
+</html>

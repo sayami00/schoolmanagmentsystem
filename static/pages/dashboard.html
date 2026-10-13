@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard · EAMS</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main">
+    <div class="page-head">
+      <div>
+        <h1>Attendance dashboard</h1>
+        <div class="sub" id="date-label"></div>
+      </div>
+      <div class="toolbar">
+        <label class="field">Date <input type="date" id="date"></label>
+        <a class="btn primary" id="mark-link" href="/attendance">Mark attendance</a>
+      </div>
+    </div>
+
+    <section class="stats" id="stats" aria-label="Summary"></section>
+
+    <div class="grid grid-2">
+      <section class="card">
+        <div class="card-head"><h2>Attendance rate, last 7 days</h2><span class="muted">% of marked working staff</span></div>
+        <div class="chart" id="trend"></div>
+      </section>
+      <section class="card">
+        <div class="card-head"><h2>By department</h2><span class="muted">attendance rate for the day</span></div>
+        <div class="hbars" id="dept-bars"></div>
+      </section>
+    </div>
+
+    <div class="grid grid-wide">
+      <section class="card">
+        <div class="card-head"><h2>Department breakdown</h2></div>
+        <div class="table-wrap">
+          <table class="stack">
+            <thead><tr><th>Department</th><th class="num">Staff</th><th class="num">Present</th><th class="num">Late</th>
+              <th class="num">Half day</th><th class="num">Absent</th><th class="num">Leave</th><th class="num">Not marked</th></tr></thead>
+            <tbody id="dept-table"></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="card">
+        <div class="card-head"><h2>Recent leave records</h2><a href="/leaves">View all</a></div>
+        <ul class="list" id="recent-leaves"></ul>
+      </section>
+    </div>
+  </main>
+</div>
+<script src="/static/js/app.js"></script>
+<script src="/static/js/dashboard.js"></script>
+</body>
+</html>

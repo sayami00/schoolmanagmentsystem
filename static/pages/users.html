@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>System users · EAMS</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main">
+    <div class="page-head">
+      <div><h1>System users</h1><div class="sub">Admin and HR accounts that can sign in</div></div>
+      <button class="btn primary" id="add-btn" type="button">+ Add user</button>
+    </div>
+    <section class="card">
+      <div class="table-wrap">
+        <table class="stack">
+          <thead><tr><th>Name</th><th>Username</th><th>Role</th><th>Status</th><th>Created</th><th><span class="hidden">Actions</span></th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<dialog id="user-dialog" aria-labelledby="user-title">
+  <form novalidate>
+    <div class="dialog-head"><h2 class="dialog-title" id="user-title">User</h2><button type="button" class="icon-btn" data-close aria-label="Close">&times;</button></div>
+    <div class="dialog-body">
+      <p class="form-error hidden" role="alert"></p>
+      <input type="hidden" name="id">
+      <div class="form-grid">
+        <label class="field">Username *<input name="username" required maxlength="50" autocomplete="off"></label>
+        <label class="field">Full name *<input name="full_name" required maxlength="100"></label>
+        <label class="field">Role *<select name="role"><option value="hr">HR</option><option value="admin">Admin</option></select></label>
+        <label class="field"><span id="pwd-label">Password *</span><input name="password" type="password" maxlength="128" autocomplete="new-password"></label>
+        <label class="check full" id="active-wrap"><input type="checkbox" name="is_active"> Account active</label>
+        <p class="muted full">Passwords need 8+ characters with at least one letter and one digit.</p>
+      </div>
+    </div>
+    <div class="dialog-foot"><button type="button" class="btn" data-close>Cancel</button><button type="submit" class="btn primary">Save</button></div>
+  </form>
+</dialog>
+
+<script src="/static/js/app.js"></script>
+<script src="/static/js/users.js"></script>
+</body>
+</html>
